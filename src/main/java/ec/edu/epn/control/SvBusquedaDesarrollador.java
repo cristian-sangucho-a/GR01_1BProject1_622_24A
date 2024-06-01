@@ -19,7 +19,7 @@ public class SvBusquedaDesarrollador extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String desarrollador = request.getParameter("desarrollador");
 
-        List<Videojuego> videojuegos =  videojuegoDAO.getVideojuegoByDesarrollador(desarrollador);
+        List<Videojuego> videojuegos =  videojuegoDAO.obtenerVideojuegoPorDesarrollador(desarrollador);
 
         HttpSession session = request.getSession();
 

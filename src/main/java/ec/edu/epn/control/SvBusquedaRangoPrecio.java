@@ -37,7 +37,7 @@ public class SvBusquedaRangoPrecio extends HttpServlet {
         }
 
 
-        List<Videojuego> videojuegos = videojuegoDAO.getVideojuegosByRangoDePrecio(precioMinimo, precioMaximo);
+        List<Videojuego> videojuegos = videojuegoDAO.obtenerVideojuegosPorRangoDePrecio(precioMinimo, precioMaximo);
 
 
         HttpSession session = request.getSession();

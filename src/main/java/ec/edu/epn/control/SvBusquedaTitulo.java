@@ -18,7 +18,7 @@ public class SvBusquedaTitulo extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String tituloEntrante = request.getParameter("titulo");
-        List<Videojuego> videojuegos =  videojuegoDAO.getVideojuegoByTitulo(tituloEntrante);
+        List<Videojuego> videojuegos =  videojuegoDAO.obtenerVideojuegoPorTitulo(tituloEntrante);
         HttpSession sesion = request.getSession();
         sesion.setAttribute("videojuegos", videojuegos);
         response.sendRedirect("catalogoFiltrado.jsp");
