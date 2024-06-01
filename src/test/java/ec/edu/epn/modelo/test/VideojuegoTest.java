@@ -2,7 +2,6 @@ package ec.edu.epn.modelo.test;
 
 import ec.edu.epn.modelo.entidad.Videojuego;
 import ec.edu.epn.modelo.persistencia.VideojuegoDAO;
-import ec.edu.epn.modelo.historico.BaseDeDatos;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;

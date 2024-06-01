@@ -6,13 +6,11 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-public class BaseDeDatos implements Serializable {
+public class BaseDeDatosBorrar implements Serializable {
 
     private EntityManagerFactory emf = null;
 
-
-
-    public BaseDeDatos() {
+    public BaseDeDatosBorrar() {
         emf = Persistence.createEntityManagerFactory("GR01_1BP1_622_24A_PU");
         this.emf = emf;
     }
