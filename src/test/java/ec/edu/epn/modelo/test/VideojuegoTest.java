@@ -23,7 +23,6 @@ public class VideojuegoTest {
 public static VideojuegoDAO videojuegoDAO;
 public static Videojuego videojuego1 = new Videojuego();
 public static Videojuego videojuego2 = new Videojuego();
-public static BaseDeDatos baseDeDatos;
    @BeforeClass
     public static void setUp() {
         String tituloEntrante = "GTA V";
@@ -32,7 +31,6 @@ public static BaseDeDatos baseDeDatos;
         Double precioVideojuego2 = 30.00;
         String desarrolladorVideojuego = "Jorman Chuquer";
         String desarrolladorVideojuego2 = "Cristian Sangucho";
-        baseDeDatos = Mockito.mock(BaseDeDatos.class);
         videojuegoDAO = Mockito.mock(VideojuegoDAO.class);
         videojuego1.setTitulo(tituloEntrante);
         videojuego2.setTitulo(tituloEntrante2);
@@ -49,20 +47,20 @@ public static BaseDeDatos baseDeDatos;
         List<Videojuego> videojuegos = new ArrayList<>();
         videojuegos.add(videojuego1);
         // Definir el comportamiento del mock
-        Mockito.when(videojuegoDAO.getVideojuegoByTitulo(tituloEntrante)).thenReturn(videojuegos);
+        Mockito.when(videojuegoDAO.obtenerVideojuegoPorTitulo(tituloEntrante)).thenReturn(videojuegos);
         // Llamada del metodo que vamos a probar
-        List<Videojuego> resultado = videojuegoDAO.getVideojuegoByTitulo(tituloEntrante);
+        List<Videojuego> resultado = videojuegoDAO.obtenerVideojuegoPorTitulo(tituloEntrante);
         assertNotNull(resultado);
         // Verificar que el método getVideojuegoByTitulo fue llamado con los argumentos correctos
-        Mockito.verify(videojuegoDAO).getVideojuegoByTitulo(tituloEntrante);
+        Mockito.verify(videojuegoDAO).obtenerVideojuegoPorTitulo(tituloEntrante);
     }
     @Test
     public void testWithMockBuscarVideojuegoPorTitulo_then_no_obtener_ninguna_coincidencia(){
        String tituloEntrante = "Minecraft";
         //no se obtiene ninguna coincidencia
 
-        Mockito.when(videojuegoDAO.getVideojuegoByTitulo(tituloEntrante)).thenReturn(new ArrayList<>());
-        List<Videojuego> resultado = videojuegoDAO.getVideojuegoByTitulo(tituloEntrante);
+        Mockito.when(videojuegoDAO.obtenerVideojuegoPorTitulo(tituloEntrante)).thenReturn(new ArrayList<>());
+        List<Videojuego> resultado = videojuegoDAO.obtenerVideojuegoPorTitulo(tituloEntrante);
         assertTrue(resultado.isEmpty());
 
     }
@@ -72,8 +70,8 @@ public static BaseDeDatos baseDeDatos;
         Double precioMaximo = 25.00;
         List<Videojuego> videojuegos = new ArrayList<>();
         videojuegos.add(videojuego1);
-        Mockito.when(videojuegoDAO.getVideojuegosByRangoDePrecio(precioMinimo, precioMaximo)).thenReturn(videojuegos);
-        List<Videojuego> resultados = videojuegoDAO.getVideojuegosByRangoDePrecio(precioMinimo, precioMaximo);
+        Mockito.when(videojuegoDAO.obtenerVideojuegosPorRangoDePrecio(precioMinimo, precioMaximo)).thenReturn(videojuegos);
+        List<Videojuego> resultados = videojuegoDAO.obtenerVideojuegosPorRangoDePrecio(precioMinimo, precioMaximo);
         assertNotNull(resultados);
 
     }
@@ -81,8 +79,8 @@ public static BaseDeDatos baseDeDatos;
     public void testWithMockBuscarVideojuegoPorRangoDePrecio_then_no_obtener_coincidencias(){
        Double precioMinimo = 155.00;
        Double precioMaximo = 205.00;
-       Mockito.when(videojuegoDAO.getVideojuegosByRangoDePrecio(precioMinimo, precioMaximo)).thenReturn(new ArrayList<>());
-       List<Videojuego> resultado = videojuegoDAO.getVideojuegosByRangoDePrecio(precioMinimo, precioMaximo);
+       Mockito.when(videojuegoDAO.obtenerVideojuegosPorRangoDePrecio(precioMinimo, precioMaximo)).thenReturn(new ArrayList<>());
+       List<Videojuego> resultado = videojuegoDAO.obtenerVideojuegosPorRangoDePrecio(precioMinimo, precioMaximo);
        assertTrue(resultado.isEmpty());
     }
     @Test
@@ -92,19 +90,19 @@ public static BaseDeDatos baseDeDatos;
         List<Videojuego> videojuegos = new ArrayList<>();
         videojuegos.add(videojuego2);
         // Definir el comportamiento del mock
-        Mockito.when(videojuegoDAO.getVideojuegoByDesarrollador(nombreDesarrollador)).thenReturn(videojuegos);
+        Mockito.when(videojuegoDAO.obtenerVideojuegoPorDesarrollador(nombreDesarrollador)).thenReturn(videojuegos);
         // Llamada del metodo que vamos a probar
-        List<Videojuego> resultado = videojuegoDAO.getVideojuegoByTitulo(nombreDesarrollador);
+        List<Videojuego> resultado = videojuegoDAO.obtenerVideojuegoPorDesarrollador(nombreDesarrollador);
         assertFalse(resultado.isEmpty());
         // Verificar que el método getVideojuegoByTitulo fue llamado con los argumentos correctos
-        Mockito.verify(videojuegoDAO).getVideojuegoByTitulo(nombreDesarrollador);
+        Mockito.verify(videojuegoDAO).obtenerVideojuegoPorDesarrollador(nombreDesarrollador);
     }
     @Test
     public void testWithMockBuscarVideojuegoPorDesarrollador_then_no_obtener_ninguna_coincidencia(){
        String nombreDesarrollador = "Cristian Zambrano";
        //no se obtiene ninguna coincidencia
-       Mockito.when(videojuegoDAO.getVideojuegoByDesarrollador(nombreDesarrollador)).thenReturn(new ArrayList<>());
-       List<Videojuego> resultado = videojuegoDAO.getVideojuegoByDesarrollador(nombreDesarrollador);
+       Mockito.when(videojuegoDAO.obtenerVideojuegoPorDesarrollador(nombreDesarrollador)).thenReturn(new ArrayList<>());
+       List<Videojuego> resultado = videojuegoDAO.obtenerVideojuegoPorDesarrollador(nombreDesarrollador);
        assertTrue(resultado.isEmpty());
     }
 
@@ -113,8 +111,8 @@ public static BaseDeDatos baseDeDatos;
        List<Videojuego> videojuegos = new ArrayList<>();
        videojuegos.add(videojuego1);
        videojuegos.add(videojuego2);
-       Mockito.when(baseDeDatos.getVideojuegos()).thenReturn(videojuegos);
-       List<Videojuego> catalogo = baseDeDatos.getVideojuegos();
+       Mockito.when(videojuegoDAO.obtenerTodosLosVideojuego()).thenReturn(videojuegos);
+       List<Videojuego> catalogo = videojuegoDAO.obtenerTodosLosVideojuego();
        assertFalse(catalogo.isEmpty());
     }
 
