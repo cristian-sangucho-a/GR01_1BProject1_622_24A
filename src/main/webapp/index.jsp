@@ -1,42 +1,61 @@
+<%@ page import="java.util.List" %>
+<%@ page import="ec.edu.epn.modelo.entidad.Videojuego" %>
+<%@ page import="ec.edu.epn.modelo.persistencia.VideojuegoDAO" %>
 <%--
   Created by IntelliJ IDEA.
-  User: carla
-  Date: 5/19/2024
-  Time: 4:22 PM
+  User: usuario
+  Date: 31/5/2024
+  Time: 20:38
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Bienvenido a la tienda de videojuegos</title>
+    <title>Title</title>
 </head>
 <body>
 <h1>Bienvenido a la tienda de videojuegos</h1>
-<ul>
+<div>
     <li class="search-option">
-        <h2>Búsqueda por título</h2>
-        <form action="SvBusquedaTitulo" method="get">
-            <input type="text" name="titulo" placeholder="Escribe el título">
-            <input type="submit" value="Buscar">
-        </form>
+        Búsqueda por título: <form action="SvBusquedaTitulo" method="get">
+        <input type="text" name="titulo" placeholder="Escribe el título">
+        <input type="submit" value="Buscar">
+    </form>
     </li>
     <li class="search-option">
-        <h2>Búsqueda por desarrollador</h2>
-        <form action="SvBusquedaDesarrollador" method="get">
+        Busqueda por desarrollador: <form action="SvBusquedaDesarrollador" method="get">
+        <input type="text" name="desarrollador" placeholder="Escribe el nombre del desarrollador">
+        <input type="submit" value="Buscar">
+    </form>
+    </li>
+    <li class="search-option">
+        Búsqueda por rango de precio: <form action="SvBusquedaRangoPrecio" method="get">
+        <input type="text" name="precio_min" placeholder="Precio mínimo">
+        <input type="text" name="precio_max" placeholder="Precio máximo">
+        <input type="submit" value="Buscar">
+    </form>
+    </li>
+</div>
+<!--MOSTRAR EL CATALOGO-->
+<h1>Catálogo de Videojuegos</h1>
+<%
+    VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
+    List<Videojuego> videojuegos = videojuegoDAO.obtenerTodosLosVideojuego();
+    for (Videojuego videojuego : videojuegos) {
+%>
+<p><b>Juego N°: <%=videojuego.getIdVideojuego()%>
+</b></p>
+<p>Titulo: <%=videojuego.getTitulo()%>
+</p>
+<p>
+    Empresa desarrolladora: <%=videojuego.getNombreDeDesarrollador()%>
+</p>
+<p>Precio: <%=videojuego.getPrecio()%>
+</p>
+<%
+    }
+%>
 
-            <input type="text" name="desarrollador" placeholder="Escribe el nombre del desarrollador">
-            <input type="submit" value="Buscar">
-        </form>
-    </li>
-    <li class="search-option">
-        <h2>Búsqueda por rango de precio</h2>
-        <form action="SvBusquedaRangoPrecio" method="get">
-            <input type="text" name="precio_min" placeholder="Precio mínimo">
-            <input type="text" name="precio_max" placeholder="Precio máximo">
-            <input type="submit" value="Buscar">
-        </form>
-    </li>
-</ul>
+
 </body>
 </html>
