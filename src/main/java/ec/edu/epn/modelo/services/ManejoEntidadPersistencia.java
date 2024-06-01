@@ -4,12 +4,18 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-public class ManejoEntidadPersistecia {
+public class ManejoEntidadPersistencia {
     private static EntityManagerFactory entityManagerFactory;
 
-    private ManejoEntidadPersistecia() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("GR01_1BP1_622_24A_PU");
-        this.entityManagerFactory = entityManagerFactory;
+    static {
+        try {
+            entityManagerFactory = Persistence.createEntityManagerFactory("GR01_1BP1_622_24A_PU");
+        } catch (Exception e) {
+            e.printStackTrace(); // Manejo de excepción
+        }
+    }
+
+    private ManejoEntidadPersistencia() {
     }
 
     static EntityManagerFactory getEntityManagerFactoryInstance() {
@@ -17,7 +23,6 @@ public class ManejoEntidadPersistecia {
     }
 
     public static EntityManager getEntityManager() {
-        EntityManager entityManager = getEntityManagerFactoryInstance().createEntityManager();
-        return entityManager;
+        return getEntityManagerFactoryInstance().createEntityManager();
     }
 }
