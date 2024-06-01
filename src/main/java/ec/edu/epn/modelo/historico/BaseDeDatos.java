@@ -1,4 +1,4 @@
-package ec.edu.epn.modelo.services;
+package ec.edu.epn.modelo.historico;
 
 import ec.edu.epn.modelo.entidad.Videojuego;
 import jakarta.persistence.*;
@@ -10,15 +10,16 @@ public class BaseDeDatos implements Serializable {
 
     private EntityManagerFactory emf = null;
 
-    public EntityManager getEntityManager() {
-        return emf.createEntityManager();
-    }
+
 
     public BaseDeDatos() {
         emf = Persistence.createEntityManagerFactory("GR01_1BP1_622_24A_PU");
         this.emf = emf;
     }
+    public EntityManager getEntityManager() {
+        return emf.createEntityManager();
 
+    }
 
     public void persistirObjeto(Object objetoAPersistirEnLaBD){
         EntityManager em = null;
@@ -34,7 +35,6 @@ public class BaseDeDatos implements Serializable {
         }
     }
 
-
     public List<Videojuego> obtenerVideojuegoPorDesarrollador(String nombreDeDesarrollador) {
         EntityManager entityManager = getEntityManager();
         try{
@@ -44,7 +44,6 @@ public class BaseDeDatos implements Serializable {
         } finally {
             entityManager.close();
         }
-
     }
 
     public List<Videojuego> obtenerVideojuegosPorRangoDePrecio(double precioMinimo, double precioMaximo) {
@@ -57,7 +56,6 @@ public class BaseDeDatos implements Serializable {
         } finally {
             entityManager.close();
         }
-
     }
 
     public List<Videojuego> obtenerVideojuegoPorTitulo(String tituloDelVideojuego) {
@@ -69,7 +67,9 @@ public class BaseDeDatos implements Serializable {
         } finally {
             entityManager.close();
         }
-
     }
 
+    public List<Videojuego> getVideojuegos() {
+        return null;
+    }
 }
