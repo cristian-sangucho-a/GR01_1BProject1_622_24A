@@ -2,6 +2,7 @@ package ec.edu.epn.modelo.test;
 
 import ec.edu.epn.modelo.entidad.Videojuego;
 import ec.edu.epn.modelo.persistencia.VideojuegoDAO;
+import ec.edu.epn.modelo.historico.BaseDeDatos;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -22,6 +23,7 @@ public class VideojuegoTest {
 public static VideojuegoDAO videojuegoDAO;
 public static Videojuego videojuego1 = new Videojuego();
 public static Videojuego videojuego2 = new Videojuego();
+public static BaseDeDatos baseDeDatos;
    @BeforeClass
     public static void setUp() {
         String tituloEntrante = "GTA V";
@@ -30,6 +32,7 @@ public static Videojuego videojuego2 = new Videojuego();
         Double precioVideojuego2 = 30.00;
         String desarrolladorVideojuego = "Jorman Chuquer";
         String desarrolladorVideojuego2 = "Cristian Sangucho";
+        baseDeDatos = Mockito.mock(BaseDeDatos.class);
         videojuegoDAO = Mockito.mock(VideojuegoDAO.class);
         videojuego1.setTitulo(tituloEntrante);
         videojuego2.setTitulo(tituloEntrante2);
@@ -92,7 +95,7 @@ public static Videojuego videojuego2 = new Videojuego();
         Mockito.when(videojuegoDAO.getVideojuegoByDesarrollador(nombreDesarrollador)).thenReturn(videojuegos);
         // Llamada del metodo que vamos a probar
         List<Videojuego> resultado = videojuegoDAO.getVideojuegoByTitulo(nombreDesarrollador);
-        assertNotNull(resultado);
+        assertFalse(resultado.isEmpty());
         // Verificar que el método getVideojuegoByTitulo fue llamado con los argumentos correctos
         Mockito.verify(videojuegoDAO).getVideojuegoByTitulo(nombreDesarrollador);
     }
@@ -103,6 +106,16 @@ public static Videojuego videojuego2 = new Videojuego();
        Mockito.when(videojuegoDAO.getVideojuegoByDesarrollador(nombreDesarrollador)).thenReturn(new ArrayList<>());
        List<Videojuego> resultado = videojuegoDAO.getVideojuegoByDesarrollador(nombreDesarrollador);
        assertTrue(resultado.isEmpty());
+    }
+
+    @Test
+    public void given_inicio_when_ver_catalogo_then_mostrar_catalogo_videojuego(){
+       List<Videojuego> videojuegos = new ArrayList<>();
+       videojuegos.add(videojuego1);
+       videojuegos.add(videojuego2);
+       Mockito.when(baseDeDatos.getVideojuegos()).thenReturn(videojuegos);
+       List<Videojuego> catalogo = baseDeDatos.getVideojuegos();
+       assertFalse(catalogo.isEmpty());
     }
 
 }
