@@ -1,6 +1,6 @@
 package ec.edu.epn.modelo.persistencia;
 
-import ec.edu.epn.modelo.services.ManejoEntidadPersistecia;
+import ec.edu.epn.modelo.services.ManejoEntidadPersistencia;
 import ec.edu.epn.modelo.entidad.Videojuego;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
@@ -24,7 +24,7 @@ public class VideojuegoDAO {
 
 
     public void crearVideojuego(Videojuego videojuegoAPersistir){
-        EntityManager entityManager = ManejoEntidadPersistecia.getEntityManager();
+        EntityManager entityManager = ManejoEntidadPersistencia.getEntityManager();
         try {
             entityManager.getTransaction().begin();
             entityManager.persist(videojuegoAPersistir);
@@ -37,7 +37,7 @@ public class VideojuegoDAO {
     }
 
     public List<Videojuego> obtenerTodosLosVideojuego() {
-        EntityManager entityManager = ManejoEntidadPersistecia.getEntityManager();
+        EntityManager entityManager = ManejoEntidadPersistencia.getEntityManager();
         try{
             Query query = entityManager.createQuery("SELECT v FROM Videojuego v");
             return query.getResultList();
@@ -47,7 +47,7 @@ public class VideojuegoDAO {
     }
 
     public List<Videojuego> obtenerVideojuegoPorTitulo(String tituloDelVideojuego) {
-        EntityManager entityManager = ManejoEntidadPersistecia.getEntityManager();
+        EntityManager entityManager = ManejoEntidadPersistencia.getEntityManager();
         try{
             Query query = entityManager.createQuery("SELECT v FROM Videojuego v WHERE v.titulo = :tituloDelVideojuego");
             query.setParameter("tituloDelVideojuego", tituloDelVideojuego);
@@ -58,7 +58,7 @@ public class VideojuegoDAO {
     }
 
     public List<Videojuego> obtenerVideojuegosPorRangoDePrecio(double precioMinimo, double precioMaximo) {
-        EntityManager entityManager = ManejoEntidadPersistecia.getEntityManager();
+        EntityManager entityManager = ManejoEntidadPersistencia.getEntityManager();
         try{
             Query query = entityManager.createQuery("SELECT v from Videojuego v where v.precio between :precioMinimo and :precioMaximo");
             query.setParameter("precioMinimo", precioMinimo);
@@ -70,7 +70,7 @@ public class VideojuegoDAO {
     }
 
     public List<Videojuego> obtenerVideojuegoPorDesarrollador(String nombreDeDesarrollador) {
-        EntityManager entityManager = ManejoEntidadPersistecia.getEntityManager();
+        EntityManager entityManager = ManejoEntidadPersistencia.getEntityManager();
         try{
             Query query = entityManager.createQuery("SELECT v FROM Videojuego v WHERE v.nombreDeDesarrollador = :nombreDeDesarrollador");
             query.setParameter("nombreDeDesarrollador", nombreDeDesarrollador);
