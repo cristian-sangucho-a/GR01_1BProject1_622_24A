@@ -1,6 +1,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="ec.edu.epn.modelo.entidad.Videojuego" %>
 <%@ page import="ec.edu.epn.modelo.persistencia.VideojuegoDAO" %>
+<%@ page import="ec.edu.epn.modelo.entidad.CarroDeCompras" %>
+<% CarroDeCompras carroDeCompras = new CarroDeCompras();%>
+<%session.setAttribute("carroDeCompras", carroDeCompras);%>
 <%--
   Created by IntelliJ IDEA.
   User: usuario
@@ -11,10 +14,15 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Tienda</title>
 </head>
 <body>
 <h1>Bienvenido a la tienda de videojuegos</h1>
+
+<form action="carroDeCompras.jsp">
+    <input type="submit" value="Ir al carrito de compras">
+</form>
+
 <div>
     <li class="search-option">
         Búsqueda por título: <form action="SvBusquedaTitulo" method="get">

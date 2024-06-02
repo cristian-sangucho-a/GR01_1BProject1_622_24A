@@ -14,13 +14,16 @@ import java.util.List;
 
 @WebServlet(name = "SvAgregarACarrito", value = "/SvAgregarACarrito")
 public class SvAgregarACarrito extends HttpServlet {
-    CarroDeCompras carroDeCompras = new CarroDeCompras();
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int idVideojuego = Integer.parseInt(request.getParameter("idVideojuego"));
         VideojuegoDAO vDAO = new VideojuegoDAO();
+        HttpSession session = request.getSession();
+        CarroDeCompras carroDeCompras = (CarroDeCompras) session.getAttribute("carroDeCompras");
         carroDeCompras.agregarVideojuegoAlCarroDeCompras(vDAO.obtenerVideojuegoPorId(idVideojuego));
+        session.removeAttribute("carroDeCompras");
+        session.setAttribute("carroDeCompras", carroDeCompras);
         response.sendRedirect("index.jsp");
     }
 }
