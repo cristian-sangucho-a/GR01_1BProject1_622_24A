@@ -21,8 +21,10 @@ public class SvAgregarACarrito extends HttpServlet {
         VideojuegoDAO vDAO = new VideojuegoDAO();
         HttpSession session = request.getSession();
         CarroDeCompras carroDeCompras = (CarroDeCompras) session.getAttribute("carroDeCompras");
+        if (carroDeCompras == null) {carroDeCompras = new CarroDeCompras();}
+
         carroDeCompras.agregarVideojuegoAlCarroDeCompras(vDAO.obtenerVideojuegoPorId(idVideojuego));
-        session.removeAttribute("carroDeCompras");
+
         session.setAttribute("carroDeCompras", carroDeCompras);
         response.sendRedirect("index.jsp");
     }

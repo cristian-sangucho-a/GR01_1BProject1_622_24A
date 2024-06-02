@@ -2,8 +2,6 @@
 <%@ page import="ec.edu.epn.modelo.entidad.Videojuego" %>
 <%@ page import="ec.edu.epn.modelo.persistencia.VideojuegoDAO" %>
 <%@ page import="ec.edu.epn.modelo.entidad.CarroDeCompras" %>
-<% CarroDeCompras carroDeCompras = new CarroDeCompras();%>
-<%session.setAttribute("carroDeCompras", carroDeCompras);%>
 <%--
   Created by IntelliJ IDEA.
   User: usuario
