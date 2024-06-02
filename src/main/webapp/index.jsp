@@ -16,11 +16,11 @@
 </head>
 <body>
 <h1>Bienvenido a la tienda de videojuegos</h1>
-
-<form action="carroDeCompras.jsp">
-    <input type="submit" value="Ir al carrito de compras">
-</form>
-
+<br>
+<hr>
+<a href="carroDeCompras.jsp">Ir al carrito de compras</a> <br>
+<hr>
+<br>
 <div>
     <li class="search-option">
         Búsqueda por título: <form action="SvBusquedaTitulo" method="get">

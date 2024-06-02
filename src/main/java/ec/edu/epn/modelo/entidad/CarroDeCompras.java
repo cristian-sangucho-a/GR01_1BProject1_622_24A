@@ -31,4 +31,12 @@ public class CarroDeCompras {
         }
         return null;
     }
+
+    public Integer getCantidadDeVideojuegoAgregados() {
+        return cantidadDeVideojuegoAgregados;
+    }
+
+    public Double getPrecioTotalDeCarrito() {
+        return precioTotalDeCarrito;
+    }
 }
