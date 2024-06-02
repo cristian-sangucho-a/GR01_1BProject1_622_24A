@@ -19,8 +19,8 @@ public class SvAgregarACarrito extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int idVideojuego = Integer.parseInt(request.getParameter("idVideojuego"));
-        carroDeCompras.agregarVideojuegoAlCarroDeCompras(idVideojuego);
-        HttpSession session = request.getSession();
+        VideojuegoDAO vDAO = new VideojuegoDAO();
+        carroDeCompras.agregarVideojuegoAlCarroDeCompras(vDAO.obtenerVideojuegoPorId(idVideojuego));
         response.sendRedirect("index.jsp");
     }
 }

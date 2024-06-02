@@ -51,7 +51,7 @@ public class VideojuegoDAO {
         try{
             Query query = entityManager.createQuery("SELECT v FROM Videojuego v WHERE v.idVideojuego = :IdVideojuego");
             query.setParameter("IdVideojuego", IdVideojuego);
-            return (Videojuego) query.getResultList();
+            return (Videojuego) query.getResultList().get(0);
         } finally {
             entityManager.close();
         }

@@ -1,42 +1,34 @@
 package ec.edu.epn.modelo.entidad;
 
-import ec.edu.epn.modelo.persistencia.VideojuegoDAO;
-
 import java.util.ArrayList;
 
 public class CarroDeCompras {
     private int idCarrito;
     private Integer cantidadDeVideojuegoAgregados;
     private Double precioTotalDeCarrito;
-    private ArrayList<Integer>  idsVideojegosDelCarrito;
-
-
-    public CarroDeCompras(int idCarrito, Double precioTotalDeCarrito, Integer cantidadDeVideojuegoAgregados, ArrayList<Integer> idsVideojegosDelCarrito) {
-        this.precioTotalDeCarrito = precioTotalDeCarrito;
-        this.cantidadDeVideojuegoAgregados = cantidadDeVideojuegoAgregados;
-        this.idsVideojegosDelCarrito = idsVideojegosDelCarrito;
-    }
+    private ArrayList<Videojuego> videojuegosDelCarrito = new ArrayList<Videojuego>();
 
     public CarroDeCompras() {
+        this.precioTotalDeCarrito = Double.valueOf(0);
+        this.cantidadDeVideojuegoAgregados = 0;
     }
 
-    public ArrayList<Integer> getVideojegosDelCarrito() {
-        return idsVideojegosDelCarrito;
+    public ArrayList<Videojuego> getVideojuegosDelCarrito() {
+        return videojuegosDelCarrito;
     }
 
-    public void agregarVideojuegoAlCarroDeCompras( int idVideojuego){
-        VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
-        idsVideojegosDelCarrito.add(videojuegoDAO.obtenerVideojuegoPorId(idVideojuego).getIdVideojuego());
+    public void agregarVideojuegoAlCarroDeCompras(Videojuego videojuego){
+        videojuegosDelCarrito.add(videojuego);
         cantidadDeVideojuegoAgregados++;
-        precioTotalDeCarrito += videojuegoDAO.obtenerVideojuegoPorId(idVideojuego).getPrecio();
+        precioTotalDeCarrito += videojuego.getPrecio();
     }
 
-    public int getVideojuegoPorID(int idBuscada) {
-        for (int id : idsVideojegosDelCarrito) {
-            if (id == idBuscada) {
-                return id;
+    public Videojuego getVideojuegoPorID(int idBuscada) {
+        for (Videojuego videojuego : videojuegosDelCarrito) {
+            if (videojuego.getIdVideojuego() == idBuscada) {
+                return videojuego;
             }
         }
-        return 0;
+        return null;
     }
 }
