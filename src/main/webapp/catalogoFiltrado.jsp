@@ -19,15 +19,15 @@
     List<Videojuego> videojuegos = (List<Videojuego>) request.getSession().getAttribute("videojuegos");
     for (Videojuego videojuego : videojuegos) {
 %>
-<p><b>Juego N°: <%=videojuego.getIdVideojuego()%>
-</b></p>
-<p>Titulo: <%=videojuego.getTitulo()%>
-</p>
-<p>
-    Empresa desarrolladora: <%=videojuego.getNombreDeDesarrollador()%>
-</p>
-<p>Precio: <%=videojuego.getPrecio()%>
-</p>
+    <p><b>Juego N°: <%=videojuego.getIdVideojuego()%>
+    </b></p>
+    <p>Titulo: <%=videojuego.getTitulo()%></p>
+    <p>Empresa desarrolladora: <%=videojuego.getNombreDeDesarrollador()%></p>
+    <p>Precio: <%=videojuego.getPrecio()%></p>
+    <form action="SvAgregarACarrito" method="get">
+        <input type="hidden" name="idVideojuego" value="<%=videojuego.getIdVideojuego()%>">
+        <button type="submit">Agregar al carrito</button>
+    </form>
 <%
     }
 %>
