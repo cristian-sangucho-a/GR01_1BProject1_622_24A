@@ -15,7 +15,9 @@ public class SvValidadorTarjetaCredito extends HttpServlet {
         String numeroTarjeta = request.getParameter("cardNumber");
         String fechaExpiracion = request.getParameter("expiryDate");
 
-        if(!TarjetaCredito.validateCreditCard(numeroTarjeta, fechaExpiracion)){
+
+
+        if(!TarjetaCredito.validarTarjeta(numeroTarjeta.toCharArray())){
             response.sendRedirect("pagoInvalido.jsp");
             return;
         }
