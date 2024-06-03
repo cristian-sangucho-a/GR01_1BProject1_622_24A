@@ -1,0 +1,6 @@
+FROM mariadb:10.4
+
+ENV MARIADB_ROOT_PASSWORD=root
+ENV MARIADB_DATABASE=tiendavideojuegos
+COPY ./my.cnf /etc/mysql/my.cnf
+COPY ./init.sql /docker-entrypoint-initdb.d/init.sql
