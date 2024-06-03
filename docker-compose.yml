@@ -13,6 +13,8 @@ services:
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "3306:3306"
+    networks:
+      - mynetwork
 
   webapp:
     container_name: webapp
@@ -24,3 +26,8 @@ services:
       - ./target/tienda.war:/usr/local/tomcat/webapps/tienda.war
     ports:
       - "8080:8080"
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
