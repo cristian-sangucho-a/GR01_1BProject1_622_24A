@@ -1,4 +1,4 @@
-<%--
+<%@ page import="ec.edu.epn.modelo.entidad.CarroDeCompras" %><%--
   Created by IntelliJ IDEA.
   User: jeanp
   Date: 1/6/2024
@@ -11,7 +11,9 @@
     <title>Pago Exitoso</title>
 </head>
 <body>
-    <h1>El pago fue realizado con exito</h1>
-    <a href="index.jsp">Volver a pagina inicio</a>
+<% CarroDeCompras carroDeCompras = new CarroDeCompras();%>
+<%session.setAttribute("carroDeCompras", carroDeCompras);%>
+<h1>El pago fue realizado con exito</h1>
+<a href="index.jsp">Volver a pagina inicio</a>
 </body>
 </html>

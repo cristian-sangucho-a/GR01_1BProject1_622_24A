@@ -21,8 +21,8 @@ public class CarroDeComprasTest {
     public static void setUp() {
         String tituloEntrante = "GTA V";
         String tituloEntrante2 = "The Witcher";
-        Double precioVideojuego = 20.00;
-        Double precioVideojuego2 = 30.00;
+        double precioVideojuego = 20.00;
+        double precioVideojuego2 = 30.00;
         String desarrolladorVideojuego = "Jorman Chuquer";
         String desarrolladorVideojuego2 = "Cristian Sangucho";
         videojuego1.setTitulo(tituloEntrante);

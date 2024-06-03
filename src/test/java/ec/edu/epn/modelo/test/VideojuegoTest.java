@@ -26,8 +26,8 @@ public static Videojuego videojuego2 = new Videojuego();
     public static void setUp() {
         String tituloEntrante = "GTA V";
         String tituloEntrante2 = "The Witcher";
-        Double precioVideojuego = 20.00;
-        Double precioVideojuego2 = 30.00;
+        double precioVideojuego = 20.00;
+        double precioVideojuego2 = 30.00;
         String desarrolladorVideojuego = "Jorman Chuquer";
         String desarrolladorVideojuego2 = "Cristian Sangucho";
         videojuegoDAO = Mockito.mock(VideojuegoDAO.class);
@@ -65,8 +65,8 @@ public static Videojuego videojuego2 = new Videojuego();
     }
     @Test
     public void testWithMockBuscarVideojuegoPorRangoDePrecio_then_obtenerCoincidencias(){
-        Double precioMinimo = 15.00;
-        Double precioMaximo = 25.00;
+        double precioMinimo = 15.00;
+        double precioMaximo = 25.00;
         List<Videojuego> videojuegos = new ArrayList<>();
         videojuegos.add(videojuego1);
         Mockito.when(videojuegoDAO.obtenerVideojuegosPorRangoDePrecio(precioMinimo, precioMaximo)).thenReturn(videojuegos);
@@ -76,8 +76,8 @@ public static Videojuego videojuego2 = new Videojuego();
     }
     @Test
     public void testWithMockBuscarVideojuegoPorRangoDePrecio_then_no_obtener_coincidencias(){
-       Double precioMinimo = 155.00;
-       Double precioMaximo = 205.00;
+       double precioMinimo = 155.00;
+       double precioMaximo = 205.00;
        Mockito.when(videojuegoDAO.obtenerVideojuegosPorRangoDePrecio(precioMinimo, precioMaximo)).thenReturn(new ArrayList<>());
        List<Videojuego> resultado = videojuegoDAO.obtenerVideojuegosPorRangoDePrecio(precioMinimo, precioMaximo);
        assertTrue(resultado.isEmpty());

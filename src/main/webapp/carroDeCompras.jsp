@@ -24,11 +24,9 @@
 <hr>
 <a href="index.jsp">Volver</a> <br>
 <hr>
-<p>Cantidad de videojuegos:</p> <br>
-<p><%=cdp.getCantidadDeVideojuegoAgregados()%></p>
+<p>Cantidad de videojuegos : <%= cdp.getCantidadDeVideojuegoAgregados()%></p>
 
-<p>Precio del carrito:</p> <br>
-<p><%=cdp.getPrecioTotalDeCarrito()%></p>
+<p>Precio del carrito: <%=cdp.getPrecioTotalDeCarrito()%></p>
 <hr>
 <br>
 <%
