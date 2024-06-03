@@ -11,7 +11,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% CarroDeCompras cdp =(CarroDeCompras) session.getAttribute("carroDeCompras");%>
+<%CarroDeCompras carroDeCompras = (CarroDeCompras) session.getAttribute("carroDeCompras");%>
 <html>
 <head>
     <title>Title</title>
@@ -24,13 +24,13 @@
 <hr>
 <a href="index.jsp">Volver</a> <br>
 <hr>
-<p>Cantidad de videojuegos : <%= cdp.getCantidadDeVideojuegoAgregados()%></p>
+<p>Cantidad de videojuegos : <%= carroDeCompras.getCantidadDeVideojuegoAgregados()%></p>
 
-<p>Precio del carrito: <%=cdp.getPrecioTotalDeCarrito()%></p>
+<p>Precio del carrito: <%=carroDeCompras.getPrecioTotalDeCarrito()%></p>
 <hr>
 <br>
 <%
-    CarroDeCompras carroDeCompras = (CarroDeCompras) session.getAttribute("carroDeCompras");
+    if (carroDeCompras == null) {carroDeCompras = new CarroDeCompras();}
     ArrayList<Videojuego> videojuegos = carroDeCompras.getVideojuegosDelCarrito();
     for (Videojuego videojuego : videojuegos) {
 %>
