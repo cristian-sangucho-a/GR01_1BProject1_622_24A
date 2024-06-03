@@ -12,6 +12,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <% CarroDeCompras cdp =(CarroDeCompras) session.getAttribute("carroDeCompras");%>
+<%if (cdp == null) {cdp = new CarroDeCompras();}%>
 <html>
 <head>
     <title>Title</title>
