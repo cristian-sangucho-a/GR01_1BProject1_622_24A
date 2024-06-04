@@ -63,6 +63,17 @@ Finally, go to browser and search:
 localhost:8080/tienda/
 ``
 
+## Package:
+If you make a change:
+
+1.- execute iniciar-docker.bat
+
+- to execute clean, test, package, and docker compose up
+- visit localhost:8080/tienda/
+
+2.- upload the containers to dockerhub.
+
+  
 ## To upload the containers to DockerHub:
 ````
 docker-compose build
