@@ -12,6 +12,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%CarroDeCompras carroDeCompras = (CarroDeCompras) session.getAttribute("carroDeCompras");%>
+<%if (carroDeCompras == null) {carroDeCompras = new CarroDeCompras();}%>
 <html>
 <head>
     <title>Title</title>
@@ -30,7 +31,6 @@
 <hr>
 <br>
 <%
-    if (carroDeCompras == null) {carroDeCompras = new CarroDeCompras();}
     ArrayList<Videojuego> videojuegos = carroDeCompras.getVideojuegosDelCarrito();
     for (Videojuego videojuego : videojuegos) {
 %>
