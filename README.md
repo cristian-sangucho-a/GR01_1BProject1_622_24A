@@ -1,16 +1,16 @@
-#Project1BISWD622_24A
+# Project1BISWD622_24A
 
-#Description:
+# Description:
 The software product offers customers a catalog of videogames in the store, facilitates the management of desired videogames in a shopping cart and payment for the cart.
 
-#Elaborated by:
+# Elaborated by:
 - Jorman Chuquer (@JorMath)
 - Jean Cotera (@jeanpcot)
 - Carla Ruiz (@charlie-rzu)
 - Cristian Zambrano (@cristian-zambrano)
 - Cristian Sangucho (@cristian-sangucho-a)
 
-#Dependencies:
+# Dependencies:
 
 ``
 mockito 2.23.4
@@ -28,8 +28,8 @@ maven 3.8.5
 JDK 21.0.1
 ``
 
-##TO RUN:
-First, reate a docker-compose.yml file:
+## TO RUN:
+First, create a docker-compose.yml file:
 ````
 services:
 webapp:
@@ -54,7 +54,7 @@ Finally, go to browser and search:
 localhost:8080/tienda/
 ``
 
-##To upload the containers to DockerHub:
+## To upload the containers to DockerHub:
 ````
 docker-compose build
 
