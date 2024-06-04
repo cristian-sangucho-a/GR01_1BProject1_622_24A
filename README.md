@@ -1,7 +1,8 @@
 # Project1BISWD622_24A
 
 # Description:
-The software product provides customers with a catalog of video games, allows for easy management of selected games in a shopping cart, and enables secure payment for the cart.
+This software product offers a comprehensive catalog of video games, allowing customers to browse and select their favorite ones. It features a shopping cart for easy management of selected games and ensures secure payment processing for a safe and convenient purchasing experience.
+
 # Elaborated by:
 - Jorman Chuquer            (@JorMath)
 - Jean Cotera             (@jeanpcot)
