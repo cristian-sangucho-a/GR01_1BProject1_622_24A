@@ -40,16 +40,16 @@ MariaDB 10.4
 First, create a docker-compose.yml file:
 ````
 services:
-webapp:
-container_name: webapp
-image: cristhtsirc/gr01_1bproject1_622_24a-webapp
-ports:
-- 8080:8080
-database:
-container_name: database
-image: cristhtsirc/gr01_1bproject1_622_24a-database
-ports:
-- 3306:3306
+  webapp:
+    container_name: webapp
+    image: cristhtsirc/gr01_1bproject1_622_24a-webapp
+    ports:
+      - 8080:8080
+  database:
+    container_name: database
+    image: cristhtsirc/gr01_1bproject1_622_24a-database
+    ports:
+      - 3306:3306
 ````
 
 Then, in the same directory:
