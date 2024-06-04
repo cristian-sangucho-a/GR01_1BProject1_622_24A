@@ -1,16 +1,19 @@
 # Project1BISWD622_24A
 
 # Description:
-The software product offers customers a catalog of videogames in the store, facilitates the management of desired videogames in a shopping cart and payment for the cart.
-
+The software product provides customers with a catalog of video games, allows for easy management of selected games in a shopping cart, and enables secure payment for the cart.
 # Elaborated by:
-- Jorman Chuquer (@JorMath)
-- Jean Cotera (@jeanpcot)
-- Carla Ruiz (@charlie-rzu)
-- Cristian Zambrano (@cristian-zambrano)
+- Jorman Chuquer            (@JorMath)
+- Jean Cotera             (@jeanpcot)
+- Carla Ruiz            (@charlie-rzu)
+- Cristian Zambrano   (@Cristian-Zambrano)
 - Cristian Sangucho (@cristian-sangucho-a)
 
 # Dependencies:
+
+``
+JDK 21.0.1
+``
 
 ``
 mockito 2.23.4
@@ -25,7 +28,11 @@ maven 3.8.5
 ``
 
 ``
-JDK 21.0.1
+JUnit 4.13.2
+``
+
+``
+MariaDB 10.4
 ``
 
 ## TO RUN:
