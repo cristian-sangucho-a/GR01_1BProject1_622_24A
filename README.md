@@ -43,11 +43,13 @@ image: cristhtsirc/gr01_1bproject1_622_24a-database
 ports:
 - 3306:3306
 ````
+
 Then, in the same directory:
 
 ``
 docker compose up
 ``
+
 Finally, go to browser and search:
 
 ``
